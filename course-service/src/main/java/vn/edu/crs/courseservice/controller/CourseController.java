@@ -4,10 +4,10 @@ import vn.edu.crs.courseservice.dto.CourseDTO;
 import vn.edu.crs.courseservice.service.CourseService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/courses")
@@ -16,9 +16,12 @@ public class CourseController {
 
     private final CourseService courseService;
 
+    // Buổi 3 - A.4: thay getAll() (List) bằng search() (Page), hỗ trợ ?keyword=&page=&size=&sort=
     @GetMapping
-    public List<CourseDTO> getAll() {
-        return courseService.getAll();
+    public Page<CourseDTO> search(
+            @RequestParam(required = false) String keyword,
+            Pageable pageable) {
+        return courseService.search(keyword, pageable);
     }
 
     @GetMapping("/{id}")
