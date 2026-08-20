@@ -49,13 +49,12 @@ spring:
               filters:
                 - RewritePath=/api/public/courses, /courses
 
-      # Tạo trước để buổi sau (Frontend) không cần cập nhật
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "http://localhost:5173"
-            allowedMethods: "*"
-            allowedHeaders: "*"
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins: "http://localhost:5173"
+                allowedMethods: "*"
+                allowedHeaders: "*"
 
 jwt:
   secret: CRS-Microservices-Secret-Key-Nam-3-Hoc-Ky-2026-Doi-Trong-Thuc-Te
